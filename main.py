@@ -1,4 +1,8 @@
-from KNN_sklearn import KNNClassifier
+#!/usr/bin/python
+# -*- coding: UTF-8 -*-
+
+import numpy as np
+from KNN_sklearn import kNNClassifier
 
 # 样本集
 X_raw = [[13.23,  5.64],
@@ -20,12 +24,13 @@ y_train = np.array(y_raw)
 # 待预测值
 # 当预测变量只有一个时，一定要 reshape(1,-1) 成二维数组不然会报错。
 x_test= np.array([12.08,  3.3])
-X_predict = x_test.reshape(1,-1)
+#X_predict = x_test.reshape(1,-1)
+X_predict = np.array([[12.08, 3.3], [12.8,4.1]])
 
 # 调用程序中的 kNNClassifier 类，赋予 k 参数为 3，命名为一个实例 kNN_classify 。
-KNN_clssify = KNNClassifier(3)
+KNN_classify = kNNClassifier(3)
 # 把样本集 X_train，y_train 传给实例 fit 
-kNN_classify.fit(X_train,y_train)
+KNN_classify.fit(X_train,y_train)
 # fit 好后再传入待预测样本 X_predict 进行预测就可以得到分类结果了
-y_predict = kNN_classify.predict(X_predict)
+y_predict = KNN_classify.predict(X_predict)
 print y_predict
