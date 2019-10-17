@@ -2,6 +2,7 @@
 https://www.dazhuanlan.com/2019/10/05/5d9846c0d167b/
 
 kNN超参数
+knn_clf = KNeighborsClassifier(algorithm='brute', n_jobs=-1, n_neighbors=k, weights='distance', p=p)
 1 algorithm
   algorithm 即算法，意思就是建立 kNN 模型时采用什么算法去搜索最近的 k 个点，有四个选项：
     brute（暴力搜索）
@@ -21,3 +22,14 @@ kNN超参数
   
 2 n_neighbors
   n_neighbors 即要选择最近几个点，默认值是 5（等效 k )。
+
+3 距离权重
+  在 Sklearn 的 kNN 模型中有专门考虑权重的超参数：weights，它有两个选项：
+    uniform 不考虑距离权重，默认值
+    distance 考虑距离权重
+  
+4 p
+  欧拉距离 p=2
+  曼哈顿距离 p=1
+  明可夫斯基距离（Minkowski Distance）
+  
